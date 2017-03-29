@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Baseline solution for the ACM Recsys Challenge 2017
 using XGBoost
@@ -17,11 +18,11 @@ import random
 print(" --- Recsys Challenge 2017 Baseline --- ")
 
 N_WORKERS         = 5
-USERS_FILE        = "users.csv"
-ITEMS_FILE        = "items.csv"
-INTERACTIONS_FILE = "interactions.csv"
-TARGET_USERS      = "targetUsers.csv"
-TARGET_ITEMS      = "targetItems.csv"
+USERS_FILE        = "/students/iamishalkin/shared/ReqSys/data/users.csv"
+ITEMS_FILE        = "/students/iamishalkin/shared/ReqSys/data/items.csv"
+INTERACTIONS_FILE = "/students/iamishalkin/shared/ReqSys/data/interactions.csv"
+TARGET_USERS      = "/students/iamishalkin/shared/ReqSys/data/targetUsers.csv"
+TARGET_ITEMS      = "/students/iamishalkin/shared/ReqSys/data/targetItems.csv"
 
 
 '''
@@ -67,12 +68,14 @@ bst.save_model('recsys2017.model')
 '''
 target_users = []
 for line in open(TARGET_USERS):
-    target_users += [int(line.strip())]
+    #target_users += [int(line.strip())] was from http://stackoverflow.com/questions/1841565/valueerror-invalid-literal-for-int-with-base-10
+    target_users += [float(line.strip())]
 target_users = set(target_users)
 
 target_items = []
 for line in open(TARGET_ITEMS):
-    target_items += [int(line.strip())]
+    #target_items += [int(line.strip())] was
+    target_items += [float(line.strip())]
 
 
 '''

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Parsing the ACM Recsys Challenge 2017 data into interactions,
 items and user models.

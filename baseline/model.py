@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Modeling users, interactions and items from
 the recsys challenge 2017.
