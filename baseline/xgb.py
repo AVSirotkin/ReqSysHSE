@@ -22,6 +22,7 @@ USERS_FILE        = "/students/iamishalkin/shared/ReqSys/data/users.csv"
 ITEMS_FILE        = "/students/iamishalkin/shared/ReqSys/data/items.csv"
 INTERACTIONS_FILE = "/students/iamishalkin/shared/ReqSys/data/interactions.csv"
 TARGET_USERS      = "/students/iamishalkin/shared/ReqSys/data/targetUsers.csv"
+#TARGET_USERS='targetUsers_W_H.csv'
 TARGET_ITEMS      = "/students/iamishalkin/shared/ReqSys/data/targetItems.csv"
 
 
@@ -67,23 +68,50 @@ bst.save_model('recsys2017.model')
 4) Create target sets for items and users
 '''
 target_users = []
-for line in open(TARGET_USERS):
-    #target_users += [int(line.strip())] was from http://stackoverflow.com/questions/1841565/valueerror-invalid-literal-for-int-with-base-10
-    target_users += [float(line.strip())]
+
+
+with open(TARGET_USERS) as target_users_without_header:
+    next(target_users_without_header) #skip the header
+    for line in target_users_without_header:
+        target_users += [int(line.strip())]
+
+
+
+#for line in open(TARGET_USERS):
+#    target_users += [int(line.strip())] 
+    
 target_users = set(target_users)
 
 target_items = []
 for line in open(TARGET_ITEMS):
-    #target_items += [int(line.strip())] was
-    target_items += [float(line.strip())]
+    target_items += [int(line.strip())]
+    
 
 
 '''
 5) Schedule classification
 '''
+
+
+
+
+filename = "solution.csv"
+classify_worker(target_items, target_users, items, users, filename, bst)
+
+'''
 bucket_size = len(target_items) / N_WORKERS
 start = 0
 jobs = []
+
+for i in range(0, N_WORKERS):
+  stop = int(min(len(target_items), start + bucket_size))
+  filename = "solution_" + str(i) + ".csv"
+  classify_worker(target_items[start:stop], target_users, items, users, filename, bst)
+  start=stop
+'''
+
+
+"""
 for i in range(0, N_WORKERS):
     stop = int(min(len(target_items), start + bucket_size))
     filename = "solution_" + str(i) + ".csv"
@@ -96,4 +124,4 @@ for j in jobs:
 
 for j in jobs:
     j.join()
-
+"""
