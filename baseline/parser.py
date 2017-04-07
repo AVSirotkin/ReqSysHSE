@@ -48,7 +48,8 @@ def build_user(str_user, names):
         int(str_user[names["industry_id"]]),
         int(str_user[names["discipline_id"]]),
         str_user[names["country"]],
-        str_user[names["region"]]
+        str_user[names["region"]],
+        int(str_user[names["wtcj"]])
     )
     
 

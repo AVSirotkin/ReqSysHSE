@@ -28,7 +28,9 @@ print(" --- Recsys Challenge 2017 Baseline --- ")
 1) Parse the challenge data, exclude all impressions
    Exclude all impressions
 '''
+TARGET_USERS      = "targetUsers.csv"
 
+TARGET_ITEMS      = "/students/iamishalkin/shared/ReqSys/data/targetItems.csv"
 
 with open('/students/iamishalkin/shared/ReqSys/data/pickle/users.pickle', 'rb') as handle:
     users = pickle.load(handle)
@@ -83,7 +85,6 @@ target_users = []
 with open(TARGET_USERS) as f:
     next(f)
     for line in f:
-#for line in open(TARGET_USERS):
       target_users += [int(line.strip())]
 target_users = set(target_users)
 

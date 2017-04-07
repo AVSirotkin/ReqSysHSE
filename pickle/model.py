@@ -8,13 +8,14 @@ by Daniel Kohlsdorf
 
 class User:
 
-    def __init__(self, title, clevel, indus, disc, country, region):
+    def __init__(self, title, clevel, indus, disc, country, region, wtcj):
         self.title   = title
         self.clevel  = clevel
         self.indus   = indus
         self.disc    = disc
         self.country = country
         self.region  = region
+        self.wtcj = wtcj
 
 class Item:
 
@@ -78,12 +79,15 @@ class Interaction:
             return 0.0
         else:
             return 1.0
+            
+    def wtcj(self):
+        return wtcj
     
     def features(self):
         return [
             self.title_match(), self.clevel_match(), self.indus_match(), 
             self.discipline_match(), self.country_match(), self.region_match(),
-            self.student_match(),self.ceo_volunt_mismatch()
+            self.student_match(),self.ceo_volunt_mismatch(), self.wtcj()
         ]
 
     def label(self): 
