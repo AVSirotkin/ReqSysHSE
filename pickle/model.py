@@ -80,14 +80,14 @@ class Interaction:
         else:
             return 1.0
             
-    def wtcj(self):
+    def user_wtcj(self):
         return self.user.wtcj
-    
+            
     def features(self):
         return [
             self.title_match(), self.clevel_match(), self.indus_match(), 
             self.discipline_match(), self.country_match(), self.region_match(),
-            self.student_match(),self.ceo_volunt_mismatch(), self.wtcj()
+            self.student_match(),self.ceo_volunt_mismatch(), self.user_wtcj()
         ]
 
     def label(self): 
