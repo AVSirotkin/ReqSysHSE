@@ -7,7 +7,7 @@ by Daniel Kohlsdorf
 '''
 
 
-
+from datetime import datetime
 import numpy as np
 import xgboost as xgb
 '''
@@ -19,6 +19,7 @@ from parser import *
 from recommendation_worker import *
 # import random
 import pickle
+start=datetime.now()
 print(" --- Recsys Challenge 2017 Baseline --- ")
 
 
@@ -121,3 +122,4 @@ for j in jobs:
 for j in jobs:
     j.join()
 
+print( "execution time %s " % (datetime.now()-start))
