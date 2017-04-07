@@ -59,7 +59,8 @@ def build_item(str_item, names):
         int(str_item[names["industry_id"]]),
         int(str_item[names["discipline_id"]]),
         str_item[names["country"]],
-        str_item[names["region"]]
+        str_item[names["region"]],
+        int(str_item[names["employment"]])
     )
 
 
