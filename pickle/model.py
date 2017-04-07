@@ -81,7 +81,7 @@ class Interaction:
             return 1.0
             
     def wtcj(self):
-        return wtcj
+        return self.user.wtcj
     
     def features(self):
         return [
